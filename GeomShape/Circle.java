@@ -1,36 +1,35 @@
 package GeomShape;
 
-public class Square extends Rectangle {
-    private Point corner;
-    private double size;
-    public Square(){
-        this.corner.setY(0);
-        this.corner.setX(0);
-        this.size = 1;
+public class Circle extends Shape {
+    private Point center;
+    private double radius;
+    public Circle() {
+        this.center.setX(0);
+        this.center.setY(0);
+        this.radius = 1;
     }
-    public Square(Point corner, double size){
-        this.corner = corner;
-        this.size = size;
+    public Circle(Point center, double radius){
+        this.center = center;
+        this.radius = radius;
     }
-
-    public Square(Point corner, double size, Color color, boolean filled){
-        super(null,null, color, filled);
-        this.corner = corner;
-        this.size = size;
+    public Circle(Point center, double radius, Color color, boolean filled) {
+        super(color, filled);
+        this.radius = radius;
+        this.center = center;
     }
-
+    public Point getCenter(){
+        return center;
+    }
+    public double getRadius(){
+        return radius;
+    }
     @Override
-    public double getArea() {
-        return size * size;
+    public double getArea(){
+        return Math.PI * radius * radius;
     }
-
     @Override
     public double getCircumference() {
-        return 4 * size;
-    }
-
-    public double getSize() {
-        return size;
+        return 2 * Math.PI * radius;
     }
     @Override
     public int hashCode() {
@@ -55,9 +54,11 @@ public class Square extends Rectangle {
         return color.equals(myShape.getColor()) &&
                 filled == myShape.isFilled();
     }
+    @Override
     public String toString(){
-        return "which is subclass of " +
+        return "which is subclass of" +
                 super.toString() +
                 '}';
     }
+
 }
